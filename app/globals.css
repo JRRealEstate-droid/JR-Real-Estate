@@ -62,3 +62,4 @@
 .card-luxury {
   @apply bg-charcoal-100 border border-charcoal-50 hover:border-gold/40 transition-all duration-300 rounded-xl overflow-hidden shadow-lg;
 }
+

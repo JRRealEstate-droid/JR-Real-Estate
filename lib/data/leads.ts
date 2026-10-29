@@ -431,3 +431,4 @@ export async function mergeLeads(primaryLeadId: string, secondaryLeadId: string,
   inMemoryLeads.splice(secondaryIndex, 1);
   return primary;
 }
+

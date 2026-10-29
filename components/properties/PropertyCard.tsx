@@ -143,3 +143,4 @@ export function PropertyCard({ property }: PropertyCardProps) {
     </div>
   );
 }
+

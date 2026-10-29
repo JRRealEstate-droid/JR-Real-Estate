@@ -16,13 +16,13 @@ export const BRAND = {
 
 export const NAV_LINKS = [
   { name: 'Home', href: '/' },
-  { name: 'Buy Property', href: '/buy' },
-  { name: 'Rent / Lease', href: '/rent' },
-  { name: 'Sell Property', href: '/sell' },
-  { name: 'New Projects', href: '/projects' },
+  { name: 'Buy', href: '/buy' },
+  { name: 'Rent', href: '/rent' },
+  { name: 'Sell', href: '/sell' },
+  { name: 'Projects', href: '/projects' },
   { name: 'Construction', href: '/construction' },
   { name: 'Services', href: '/services' },
-  { name: 'About Us', href: '/about' },
+  { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -118,3 +118,4 @@ export const CONSTRUCTION_PACKAGES = [
     ],
   },
 ];
+

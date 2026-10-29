@@ -123,3 +123,4 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
     </div>
   );
 }
+

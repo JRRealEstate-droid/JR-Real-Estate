@@ -154,3 +154,4 @@ SUPABASE_STORAGE_BUCKET="jr-media"
 
 > **Important Pre-Launch Requirement:**
 > Business registration details, circle rate calculations, legal procedures (registry & mutation), and RERA disclaimers must be reviewed and confirmed by Mr. Umesh Yadav and qualified legal counsel before public launch. Development-only sample listings must remain tagged as sample data and kept separate from genuine live inventory.
+

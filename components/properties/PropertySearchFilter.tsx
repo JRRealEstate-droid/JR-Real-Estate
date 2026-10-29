@@ -241,3 +241,4 @@ export function PropertySearchFilter({ transactionType, totalFound }: PropertySe
     </div>
   );
 }
+

@@ -493,3 +493,4 @@ export function PropertyManagerClient({ initialProperties }: PropertyManagerClie
     </div>
   );
 }
+

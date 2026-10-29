@@ -112,3 +112,4 @@ export function ProjectsSpotlight({ projects }: ProjectsSpotlightProps) {
     </section>
   );
 }
+

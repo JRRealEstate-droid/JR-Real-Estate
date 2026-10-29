@@ -50,3 +50,4 @@ export default async function SinglePropertyPage({ params }: PropertyPageProps) 
 
   return <PropertyDetailView property={property} similarProperties={filteredSimilar} />;
 }
+

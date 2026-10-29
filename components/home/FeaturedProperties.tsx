@@ -88,3 +88,4 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
     </section>
   );
 }
+

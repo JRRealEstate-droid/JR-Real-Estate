@@ -418,3 +418,4 @@ model AuditLog {
   @@index([action])
   @@index([createdAt])
 }
+

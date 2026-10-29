@@ -504,3 +504,4 @@ export function LeadsCrmClient({ initialLeads, selectedLeadId }: LeadsCrmClientP
     </div>
   );
 }
+

@@ -607,3 +607,4 @@ export function PropertyDetailView({ property, similarProperties }: PropertyDeta
     </div>
   );
 }
+

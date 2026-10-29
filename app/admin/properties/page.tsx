@@ -12,3 +12,4 @@ export default async function AdminPropertiesPage() {
 
   return <PropertyManagerClient initialProperties={properties} />;
 }
+

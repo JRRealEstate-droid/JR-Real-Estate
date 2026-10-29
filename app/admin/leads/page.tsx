@@ -13,3 +13,4 @@ export default async function AdminLeadsPage({
 
   return <LeadsCrmClient initialLeads={leads} selectedLeadId={searchParams.id} />;
 }
+
