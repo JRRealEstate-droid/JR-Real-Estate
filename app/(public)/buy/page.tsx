@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { getProperties } from '@/lib/data/properties';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { PropertySearchFilter } from '@/components/properties/PropertySearchFilter';
@@ -62,6 +63,29 @@ export default async function BuyPage({
           <p className="text-sm text-ivory/70 mt-2 max-w-2xl">
             Browse verified free-hold residential plots, 2/3 BHK flats, independent villas, and commercial real estate with clear title documentation and direct owner coordination.
           </p>
+        </div>
+
+        {/* Visual Heritage Corridor Banner */}
+        <div className="mb-8 relative rounded-2xl overflow-hidden border border-charcoal-100 h-28 sm:h-36 shadow-lg">
+          <Image
+            src="/images/varanasi-river-ghat-panoramic.webp"
+            alt="Varanasi River Ghats and Heritage"
+            fill
+            sizes="100vw"
+            unoptimized={true}
+            className="object-cover object-center filter brightness-75 contrast-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/80 to-transparent" />
+          <div className="absolute inset-0 flex items-center px-6 sm:px-8">
+            <div className="space-y-1">
+              <span className="text-gold uppercase text-[11px] font-mono tracking-widest font-semibold">
+                Prime Varanasi Corridors &bull; Pandeypur &bull; Shivpur &bull; Ring Road
+              </span>
+              <p className="text-lg sm:text-2xl font-serif font-bold text-ivory">
+                Find Your Ideal Plot, Flat, or House in the City of Light
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Filter Controls Component */}

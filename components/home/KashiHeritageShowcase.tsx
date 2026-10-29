@@ -48,12 +48,12 @@ const KASHI_SCENES = [
     localityContext: 'Rooted in local knowledge from Pandeypur Chauraha to the bypass.',
   },
   {
-    id: 'golden-panorama',
-    title: 'The Eternal Riverfront Horizon',
-    tag: 'Dawn Light',
-    image: '/images/varanasi-golden-ghats.jpg',
-    description: 'The golden hour panorama across the crescent curve of the Ganges, evoking eternal peace and timeless prosperity.',
-    localityContext: 'Your dream home in Varanasi, built with uncompromising responsibility.',
+    id: 'ghat-river-view',
+    title: 'Sacred Riverfront & Ancient Ghats',
+    tag: 'Ganga & Heritage',
+    image: '/images/varanasi-ghat-river-view.jpg',
+    description: 'The iconic crescent curve of the Ganges lined with ancient stone palaces, temples, umbrellas, and boats floating peacefully on the sacred waters.',
+    localityContext: 'Prime riverfront and heritage corridor properties curated with honesty.',
   },
 ];
 
@@ -140,6 +140,39 @@ export function KashiHeritageShowcase() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Panoramic Riverfront Heritage Vista */}
+        <div className="mt-14 relative rounded-3xl overflow-hidden border border-gold/40 shadow-2xl bg-charcoal-300 group">
+          <div className="relative aspect-[21/6] sm:aspect-[21/5] w-full">
+            <Image
+              src="/images/varanasi-river-ghat-panoramic.webp"
+              alt="Panoramic View of Varanasi Ganga Ghats and Holy River"
+              fill
+              sizes="100vw"
+              unoptimized={true}
+              className="object-cover object-center filter brightness-95 contrast-105 group-hover:scale-102 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-ivory">
+              <div>
+                <span className="text-gold font-mono uppercase text-xs tracking-widest font-semibold flex items-center gap-1.5">
+                  <BanarasiMedallion size={13} />
+                  84 Sacred Ghats of Varanasi &bull; The Eternal Crescent
+                </span>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-ivory mt-1">
+                  Living in Harmony with Kashi&apos;s Heritage &amp; Modern Growth
+                </h3>
+              </div>
+              <Link
+                href="/buy"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gold text-charcoal font-semibold text-xs tracking-wider uppercase hover:bg-gold-light transition-all shadow-gold flex-shrink-0"
+              >
+                <span>Explore Verified Properties</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Varanasi Grounding Banner */}

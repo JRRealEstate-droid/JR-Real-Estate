@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Logo } from '@/components/ui/Logo';
 import { BRAND, VARANASI_LOCALITIES } from '@/lib/constants';
 import { MapPin, Phone, Mail, Globe, ShieldAlert } from 'lucide-react';
@@ -8,9 +9,32 @@ import { VaranasiGhatsSilhouette, BanarasiMedallion } from '@/components/ui/Kash
 export function Footer() {
   return (
     <footer className="relative bg-charcoal-400 border-t border-charcoal-100 text-ivory/80 pt-0 pb-24 md:pb-12 overflow-hidden">
-      {/* 1. Authentic Varanasi Riverfront Ghats Architectural Silhouette */}
-      <div className="relative w-full border-b border-charcoal-200/80 bg-gradient-to-b from-charcoal via-charcoal-300 to-charcoal-400">
-        <VaranasiGhatsSilhouette className="opacity-70" />
+      {/* 1. Authentic Varanasi Riverfront Ghats Panoramic Skyline */}
+      <div className="relative w-full overflow-hidden border-b border-charcoal-100 bg-charcoal-300">
+        <div className="relative w-full h-32 sm:h-44 md:h-56">
+          <Image
+            src="/images/varanasi-river-ghat-panoramic.webp"
+            alt="Authentic Varanasi Riverfront Ghats and Holy Ganga"
+            fill
+            sizes="100vw"
+            unoptimized={true}
+            className="object-cover object-center filter brightness-90 contrast-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-400 via-charcoal-400/60 to-charcoal/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-transparent to-charcoal-400" />
+
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="text-center px-4 space-y-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-charcoal/80 border border-gold/40 text-gold text-xs font-semibold backdrop-blur-sm">
+                <BanarasiMedallion size={13} />
+                <span>काशी &bull; अविनाशी &bull; सर्वतीर्थमयी</span>
+              </div>
+              <p className="text-sm sm:text-base text-ivory font-serif font-semibold drop-shadow-md tracking-wide">
+                Rooted Along the Sacred Banks of the Holy Ganga &bull; Varanasi
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
