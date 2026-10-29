@@ -2,6 +2,7 @@ import React from 'react';
 import { HeroSection } from '@/components/home/HeroSection';
 import { QuickCategories } from '@/components/home/QuickCategories';
 import { FeaturedProperties } from '@/components/home/FeaturedProperties';
+import { KashiHeritageShowcase } from '@/components/home/KashiHeritageShowcase';
 import { ConstructionHighlight } from '@/components/home/ConstructionHighlight';
 import { ProjectsSpotlight } from '@/components/home/ProjectsSpotlight';
 import { DirectorTrustSection } from '@/components/home/DirectorTrustSection';
@@ -25,6 +26,7 @@ export default async function HomePage() {
       <HeroSection />
       <QuickCategories />
       <FeaturedProperties properties={properties} />
+      <KashiHeritageShowcase />
       <ConstructionHighlight />
       <ProjectsSpotlight projects={projects} />
       <DirectorTrustSection />

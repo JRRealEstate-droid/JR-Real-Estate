@@ -40,11 +40,11 @@ export function HeroSection() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center motion-safe:animate-kashi-drift opacity-25 filter brightness-90 contrast-105"
+          className="object-cover object-center motion-safe:animate-kashi-drift opacity-65 filter brightness-105 contrast-105"
         />
-        {/* Layered Gradient Overlay for Guaranteed WCAG Contrast & Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/95 via-charcoal/80 to-charcoal" />
-        <div className="absolute inset-0 bg-banarasi-filigree pointer-events-none opacity-40" />
+        {/* Layered Gradient Overlay: Warm golden dawn light while preserving crystal-clear readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/85 via-charcoal/65 to-charcoal" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-black/30" />
       </div>
 
       {/* 2. Diya Radiance & Golden Aura */}
