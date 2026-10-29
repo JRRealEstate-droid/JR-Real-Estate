@@ -50,11 +50,11 @@ export default function AboutPage() {
         {/* Visual Heritage Panel: Varanasi Architecture */}
         <div className="relative aspect-[21/8] w-full rounded-3xl overflow-hidden border border-charcoal-100 shadow-2xl">
           <Image
-            src="https://images.unsplash.com/photo-1571536802807-30451e3955d8?auto=format&fit=crop&w=1800&q=85"
+            src="/images/varanasi-golden-ghats.jpg"
             alt="Historic stone pavilions and morning golden light over the holy river Ganga in Varanasi"
             fill
             sizes="100vw"
-            className="object-cover object-center filter brightness-90 contrast-105"
+            className="object-cover object-center filter brightness-95 contrast-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/30" />
           <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-ivory">
