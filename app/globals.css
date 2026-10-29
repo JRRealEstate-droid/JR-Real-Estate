@@ -63,3 +63,39 @@
   @apply bg-charcoal-100 border border-charcoal-50 hover:border-gold/40 transition-all duration-300 rounded-xl overflow-hidden shadow-lg;
 }
 
+/* Banarasi Brocade & Zari Weave Lattice Pattern */
+.bg-banarasi-pattern {
+  background-color: #0B0D0D;
+  background-image: radial-gradient(rgba(213, 162, 74, 0.08) 1px, transparent 1px),
+                    radial-gradient(rgba(213, 162, 74, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.bg-banarasi-filigree {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D5A24A' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M20 20L0 0h40L20 20zm0 0l20 20H0l20-20z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Kashi Atmospheric Gradient Protection for text readability */
+.kashi-scenic-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 13, 13, 0.92) 0%,
+    rgba(11, 13, 13, 0.78) 50%,
+    rgba(11, 13, 13, 0.96) 100%
+  );
+}
+
+/* Strict Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+

@@ -4,7 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ProjectItem } from '@/lib/data/projects';
-import { MapPin, Building, Calendar, ArrowRight, ShieldCheck } from 'lucide-react';
+import { MapPin, ArrowRight } from 'lucide-react';
+import { BanarasiMedallion, BanarasiCornerAccent } from '@/components/ui/KashiMotifs';
 
 interface ProjectsSpotlightProps {
   projects: ProjectItem[];
@@ -12,24 +13,27 @@ interface ProjectsSpotlightProps {
 
 export function ProjectsSpotlight({ projects }: ProjectsSpotlightProps) {
   return (
-    <section className="py-20 bg-charcoal">
+    <section className="py-20 bg-charcoal relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
           <div>
-            <span className="text-gold uppercase tracking-wider text-xs font-semibold">
-              Master-Planned Living &amp; Infrastructure
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-ivory mt-1">
-              New Projects &amp; Developments
+            <div className="flex items-center gap-2 mb-2">
+              <BanarasiMedallion size={14} />
+              <span className="text-gold uppercase tracking-[0.2em] text-xs font-semibold">
+                Planned Communities &bull; Growth Corridors
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-ivory">
+              New Projects &amp; Builder Enclaves
             </h2>
             <p className="text-sm text-ivory/70 mt-2 max-w-xl">
-              Townships and residential enclaves with dedicated amenities, green open areas, and convenient highway connectivity.
+              Townships and residential developments with dedicated wide roads, park greenery, and convenient Ring Road connectivity.
             </p>
           </div>
 
           <Link
             href="/projects"
-            className="text-xs font-semibold text-gold hover:text-gold-light transition-colors flex items-center gap-1 group"
+            className="text-xs font-semibold text-gold hover:text-gold-light transition-colors flex items-center gap-1 group self-start sm:self-end"
           >
             <span>View All Builder Projects</span>
             <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
@@ -40,8 +44,10 @@ export function ProjectsSpotlight({ projects }: ProjectsSpotlightProps) {
           {projects.map((prj) => (
             <div
               key={prj.id}
-              className="group bg-charcoal-200 rounded-2xl overflow-hidden border border-charcoal-100 hover:border-gold/40 transition-all duration-300 shadow-xl flex flex-col md:flex-row"
+              className="group relative bg-charcoal-200/90 rounded-2xl overflow-hidden border border-charcoal-100 hover:border-gold/50 transition-all duration-300 shadow-xl flex flex-col md:flex-row"
             >
+              <BanarasiCornerAccent position="top-right" />
+
               {/* Image */}
               <div className="relative md:w-5/12 aspect-[16/11] md:aspect-auto overflow-hidden bg-charcoal-300">
                 <Image
@@ -52,7 +58,7 @@ export function ProjectsSpotlight({ projects }: ProjectsSpotlightProps) {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-charcoal/90 text-gold border border-gold/40">
+                  <span className="px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-charcoal/90 text-gold border border-gold/40 shadow-sm backdrop-blur-sm">
                     {prj.status.replace(/_/g, ' ')}
                   </span>
                 </div>
@@ -98,9 +104,9 @@ export function ProjectsSpotlight({ projects }: ProjectsSpotlightProps) {
 
                   <Link
                     href={`/projects/${prj.slug}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gold/15 hover:bg-gold/25 border border-gold/40 text-gold text-xs font-bold transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-gold hover:text-gold-light group-hover:translate-x-0.5 transition-all"
                   >
-                    <span>View Project</span>
+                    <span>Explore Project</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -112,4 +118,3 @@ export function ProjectsSpotlight({ projects }: ProjectsSpotlightProps) {
     </section>
   );
 }
-

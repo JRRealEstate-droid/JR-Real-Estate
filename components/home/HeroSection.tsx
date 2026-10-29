@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { BRAND, VARANASI_LOCALITIES, PROPERTY_CATEGORIES, BUDGET_RANGES_BUY } from '@/lib/constants';
-import { getWhatsAppUrl } from '@/lib/utils';
-import { Search, MapPin, Building, IndianRupee, ArrowRight, Phone, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Search, MapPin, Building, IndianRupee, ArrowRight, Phone, CheckCircle2 } from 'lucide-react';
+import { BanarasiMedallion, GangaWaveDivider, DiyaGlow, BanarasiCornerAccent } from '@/components/ui/KashiMotifs';
 
 export function HeroSection() {
   const router = useRouter();
@@ -30,34 +31,50 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-charcoal via-charcoal-300 to-charcoal py-16 lg:py-24 border-b border-charcoal-100">
-      {/* Decorative Gold Glow Background Accents */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-gradient-to-b from-gold/10 via-gold/5 to-transparent blur-3xl pointer-events-none rounded-full" />
-      <div className="absolute -top-24 right-0 w-96 h-96 bg-gold/5 blur-3xl rounded-full pointer-events-none" />
+    <section className="relative overflow-hidden bg-charcoal pt-16 sm:pt-20 lg:pt-28 pb-0">
+      {/* 1. Atmospheric Kashi Sunrise & Ganga River Photographic Backdrop */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        <Image
+          src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=2000&q=85"
+          alt="Serene sunrise over the Ganga riverfront and historic ghats in Varanasi"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center motion-safe:animate-kashi-drift opacity-25 filter brightness-90 contrast-105"
+        />
+        {/* Layered Gradient Overlay for Guaranteed WCAG Contrast & Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/95 via-charcoal/80 to-charcoal" />
+        <div className="absolute inset-0 bg-banarasi-filigree pointer-events-none opacity-40" />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto space-y-6">
-          {/* Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-charcoal-200 border border-gold/30 text-gold text-xs font-semibold tracking-wide shadow-gold">
-            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+      {/* 2. Diya Radiance & Golden Aura */}
+      <DiyaGlow className="top-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] z-0" />
+      <div className="absolute top-20 right-10 w-72 h-72 rounded-full bg-gold/5 blur-3xl pointer-events-none z-0" />
+
+      {/* 3. Hero Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-4xl mx-auto space-y-6 motion-safe:animate-fade-rise">
+          {/* Trust Badge with Banarasi Motif */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-charcoal-200/90 border border-gold/30 text-gold text-xs font-semibold tracking-wide shadow-gold backdrop-blur-md">
+            <BanarasiMedallion size={14} className="text-gold" />
             <span>Varanasi&apos;s Leading Real Estate &amp; Construction Firm &bull; Pandeypur Chauraha</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-ivory tracking-tight leading-[1.15]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-ivory tracking-tight leading-[1.14]">
             {BRAND.heroHeadline}
           </h1>
 
           {/* Supporting Line */}
-          <p className="text-lg sm:text-xl text-ivory/80 max-w-2xl mx-auto font-normal leading-relaxed">
+          <p className="text-lg sm:text-xl text-ivory/85 max-w-2xl mx-auto font-normal leading-relaxed">
             {BRAND.heroSubheadline}
           </p>
 
-          {/* Quick CTAs */}
+          {/* Quick CTAs with Kashi Aesthetics */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href="#search-bar"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-gold via-gold-hover to-gold-dark text-charcoal font-bold text-sm shadow-gold-lg hover:brightness-105 transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-gradient-to-r from-gold via-gold-hover to-gold-dark text-charcoal font-bold text-sm shadow-gold-lg hover:brightness-105 active:scale-[0.99] transition-all"
             >
               <span>Explore Properties</span>
               <ArrowRight className="w-4 h-4" />
@@ -65,43 +82,46 @@ export function HeroSection() {
 
             <a
               href={`tel:${BRAND.phone}`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-charcoal-200 border border-gold/40 text-gold hover:bg-charcoal-100 text-sm font-semibold transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-charcoal-200/90 border border-gold/40 text-gold hover:bg-charcoal-100 hover:border-gold text-sm font-semibold backdrop-blur-md transition-all"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-4 h-4 text-gold" />
               <span>Talk to Director: {BRAND.phone}</span>
             </a>
           </div>
 
-          {/* Key Value Props Pill */}
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-ivory/70">
+          {/* Value Props Pill */}
+          <div className="pt-3 flex flex-wrap items-center justify-center gap-5 sm:gap-7 text-xs text-ivory/75">
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-gold" />
+              <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0" />
               <span>Physical Site Verified</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-gold" />
-              <span>VDA / Registry Legal Guidance</span>
+              <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0" />
+              <span>VDA &amp; Revenue Legal Guidance</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-gold" />
+              <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0" />
               <span>Turnkey Construction &amp; Materials</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-gold" />
-              <span>Transparent Pricing &bull; No Hidden Charges</span>
+              <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0" />
+              <span>Transparent Pricing &bull; No Hidden Brokerage</span>
             </span>
           </div>
         </div>
 
-        {/* Property Search Console */}
-        <div id="search-bar" className="mt-12 max-w-5xl mx-auto">
-          <div className="bg-charcoal-200/90 backdrop-blur-xl border border-gold/30 rounded-2xl p-4 sm:p-6 shadow-2xl">
+        {/* 4. Property Search Console with Banarasi Corner Accents */}
+        <div id="search-bar" className="mt-12 sm:mt-16 max-w-5xl mx-auto relative">
+          <div className="relative bg-charcoal-200/95 backdrop-blur-xl border border-gold/30 rounded-2xl p-5 sm:p-7 shadow-2xl overflow-hidden">
+            <BanarasiCornerAccent position="top-right" />
+            <BanarasiCornerAccent position="bottom-left" />
+
             {/* Tabs */}
-            <div className="flex items-center gap-2 pb-4 border-b border-charcoal-100">
+            <div className="flex items-center gap-2 pb-4 border-b border-charcoal-100/80">
               <button
                 type="button"
                 onClick={() => setActiveTab('BUY')}
-                className={`px-5 py-2 rounded-lg text-sm font-bold transition-all ${
+                className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${
                   activeTab === 'BUY'
                     ? 'bg-gold text-charcoal shadow-gold'
                     : 'text-ivory/70 hover:text-gold hover:bg-charcoal-100'
@@ -112,7 +132,7 @@ export function HeroSection() {
               <button
                 type="button"
                 onClick={() => setActiveTab('RENT')}
-                className={`px-5 py-2 rounded-lg text-sm font-bold transition-all ${
+                className={`px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${
                   activeTab === 'RENT'
                     ? 'bg-gold text-charcoal shadow-gold'
                     : 'text-ivory/70 hover:text-gold hover:bg-charcoal-100'
@@ -123,7 +143,7 @@ export function HeroSection() {
             </div>
 
             {/* Search Controls Form */}
-            <form onSubmit={handleSearch} className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <form onSubmit={handleSearch} className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Category */}
               <div>
                 <label className="block text-xs font-semibold text-ivory/70 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
@@ -188,7 +208,7 @@ export function HeroSection() {
               <div className="flex items-end">
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-gold via-gold-hover to-gold-dark hover:brightness-105 text-charcoal font-bold py-2.5 px-4 rounded-lg shadow-gold transition-all"
+                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-gold via-gold-hover to-gold-dark hover:brightness-105 active:scale-[0.99] text-charcoal font-bold py-2.5 px-4 rounded-lg shadow-gold transition-all"
                 >
                   <Search className="w-4 h-4 stroke-[2.5]" />
                   <span>Search Properties</span>
@@ -198,7 +218,11 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* 5. Ganga River Wave Transition Divider */}
+      <div className="relative mt-16 sm:mt-20">
+        <GangaWaveDivider animated={true} />
+      </div>
     </section>
   );
 }
-

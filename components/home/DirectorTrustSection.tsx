@@ -1,130 +1,139 @@
 import React from 'react';
-import Link from 'next/link';
+import Image from 'next/image';
 import { BRAND } from '@/lib/constants';
-import { ShieldCheck, MapPin, Phone, Award, Users, CheckCircle2, Building, Scale } from 'lucide-react';
+import { MapPin, Phone, Scale, Building, Users, Clock } from 'lucide-react';
+import { BanarasiMedallion, BanarasiCornerAccent, DiyaGlow } from '@/components/ui/KashiMotifs';
 
 export function DirectorTrustSection() {
   return (
-    <section className="py-20 bg-charcoal-300 border-b border-charcoal-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-charcoal-300 border-b border-charcoal-100 relative overflow-hidden">
+      {/* Subtle Banarasi Pattern Background */}
+      <div className="absolute inset-0 bg-banarasi-pattern opacity-40 pointer-events-none" />
+      <DiyaGlow className="bottom-10 left-10 w-96 h-96" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Office & Leadership Credentials */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="relative rounded-2xl overflow-hidden border border-gold/30 bg-charcoal-200 p-8 shadow-2xl">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-gold to-gold-light p-[2px] mb-6 shadow-gold">
+            <div className="relative rounded-3xl overflow-hidden border border-gold/40 bg-charcoal-200/95 p-8 sm:p-10 shadow-2xl backdrop-blur-md">
+              <BanarasiCornerAccent position="top-right" />
+              <BanarasiCornerAccent position="bottom-left" />
+
+              {/* Monogram / Director Seal */}
+              <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-gold via-gold-light to-gold-dark p-[2px] mb-6 shadow-gold">
                 <div className="w-full h-full rounded-full bg-charcoal flex items-center justify-center font-serif text-xl font-bold text-gold">
                   UY
                 </div>
               </div>
 
               <div className="space-y-1">
-                <span className="text-gold text-xs font-semibold uppercase tracking-wider">
-                  Leadership &amp; Directorate
-                </span>
-                <h3 className="text-2xl font-serif font-bold text-ivory">
+                <div className="flex items-center gap-2">
+                  <BanarasiMedallion size={13} />
+                  <span className="text-gold text-xs font-semibold uppercase tracking-[0.18em]">
+                    Leadership &amp; Directorate
+                  </span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-ivory">
                   {BRAND.director}
                 </h3>
                 <p className="text-xs text-ivory/70">
-                  Director, JR Real Estate &amp; Construction Varanasi
+                  Director &bull; JR Real Estate &amp; Construction Varanasi
                 </p>
               </div>
 
-              <div className="my-6 p-4 rounded-xl bg-charcoal-300 border-l-4 border-gold text-xs text-ivory/80 italic leading-relaxed">
-                &ldquo;Real estate in Varanasi is not just a commercial transaction; it is a family&apos;s lifelong dream and hard-earned security. Our commitment at Pandeypur Chauraha is to bring genuine legal transparency, physical site validation, and honest construction engineering to every client.&rdquo;
+              {/* Director's Personal Quote */}
+              <div className="my-6 p-5 rounded-2xl bg-charcoal-300/90 border-l-4 border-gold text-xs text-ivory/85 italic leading-relaxed shadow-inner">
+                &ldquo;Real estate in Varanasi is not just a commercial transaction; it is a family&apos;s lifelong dream and sacred security. Our pledge at Pandeypur Chauraha is to bring genuine revenue transparency, physical site validation, and honest construction engineering to every client.&rdquo;
               </div>
 
-              <div className="space-y-3 pt-2 text-xs border-t border-charcoal-100 text-ivory/80">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+              <div className="space-y-3 pt-2 text-xs border-t border-charcoal-100/80 text-ivory/80">
+                <div className="flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                   <span>Head Office: {BRAND.address}</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-gold flex-shrink-0" />
                   <a href={`tel:${BRAND.phone}`} className="text-gold font-bold hover:underline">
                     Direct Line: +91 {BRAND.phone}
                   </a>
                 </div>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-charcoal-100/60 flex items-center justify-between text-xs">
-                <span className="text-ivory/60">Office Hours</span>
-                <span className="text-ivory font-semibold">{BRAND.officeHours}</span>
+                <div className="flex items-center gap-2.5">
+                  <Clock className="w-4 h-4 text-gold flex-shrink-0" />
+                  <span className="text-ivory/70">Office Hours: {BRAND.officeHours}</span>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Why Choose JR Real Estate */}
+          {/* Right Column: Grounded in Kashi Philosophy */}
           <div className="lg:col-span-7 space-y-6">
             <div>
-              <span className="text-gold uppercase tracking-wider text-xs font-semibold">
-                Grounded in Kashi &bull; Built on Integrity
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-ivory mt-1">
-                Why Families &amp; Investors Trust JR Real Estate
+              <div className="flex items-center gap-2 mb-2">
+                <BanarasiMedallion size={15} />
+                <span className="text-gold uppercase tracking-[0.2em] text-xs font-semibold">
+                  Rooted in Varanasi &bull; Built on Integrity
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-ivory mt-1 leading-tight">
+                Why Families &amp; Investors Across Eastern UP Trust JR Real Estate
               </h2>
-              <p className="text-sm text-ivory/70 mt-2">
-                We combine deep grassroots knowledge of Varanasi revenue records with modern engineering standards to ensure your investment is secure and legally sound.
+              <p className="text-sm text-ivory/75 mt-3 leading-relaxed">
+                For centuries, Kashi has stood as a civilization founded on trust, timeless relationships, and honouring one&apos;s word. We carry forward that local ethos by combining deep grassroots knowledge of Varanasi land registries with modern architectural and engineering standards.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4">
-              <div className="p-5 rounded-xl bg-charcoal-200 border border-charcoal-100 space-y-2">
-                <div className="w-10 h-10 rounded-lg bg-charcoal-100 border border-gold/30 flex items-center justify-center text-gold">
-                  <Scale className="w-5 h-5" />
-                </div>
-                <h4 className="font-serif font-bold text-base text-ivory">
-                  Title &amp; Revenue Clearance
-                </h4>
-                <p className="text-xs text-ivory/70 leading-relaxed">
-                  Rigorous verification of Khatauni, Khasra, Barah-Sala encumbrance reports, and municipal status before offering any plot.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-xl bg-charcoal-200 border border-charcoal-100 space-y-2">
-                <div className="w-10 h-10 rounded-lg bg-charcoal-100 border border-gold/30 flex items-center justify-center text-gold">
-                  <Building className="w-5 h-5" />
-                </div>
-                <h4 className="font-serif font-bold text-base text-ivory">
-                  Under One Roof Solutions
-                </h4>
-                <p className="text-xs text-ivory/70 leading-relaxed">
-                  From finding land, registry documentation, and mutation (Dakhil Kharij) to turnkey home construction and bank home loan sanctioning.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-xl bg-charcoal-200 border border-charcoal-100 space-y-2">
-                <div className="w-10 h-10 rounded-lg bg-charcoal-100 border border-gold/30 flex items-center justify-center text-gold">
-                  <Users className="w-5 h-5" />
-                </div>
-                <h4 className="font-serif font-bold text-base text-ivory">
-                  Dedicated CRM &amp; Site Visits
-                </h4>
-                <p className="text-xs text-ivory/70 leading-relaxed">
-                  Free pick-and-drop site visits across Varanasi with dedicated relationship executives who respect your budget and time.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-xl bg-charcoal-200 border border-charcoal-100 space-y-2">
-                <div className="w-10 h-10 rounded-lg bg-charcoal-100 border border-gold/30 flex items-center justify-center text-gold">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <h4 className="font-serif font-bold text-base text-ivory">
-                  Zero False Claims
-                </h4>
-                <p className="text-xs text-ivory/70 leading-relaxed">
-                  No misleading RERA claims, fake inventory, or hidden commissions. Every detail is physically verified on-site.
-                </p>
+            {/* Visual Panel: Authentic Architectural Stone Masonry */}
+            <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden border border-charcoal-100 shadow-xl my-4">
+              <Image
+                src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80"
+                alt="Timeless architectural stone masonry and historic riverside pavilion in Varanasi"
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover object-center filter brightness-90 contrast-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] text-ivory/90 font-medium">
+                <span className="italic font-serif">Timeless Craft &bull; Enduring Foundations</span>
+                <span className="text-gold font-mono uppercase tracking-wider text-[10px]">Varanasi Heritage</span>
               </div>
             </div>
 
-            <div className="pt-4 flex items-center gap-4">
-              <Link
-                href="/about"
-                className="text-xs font-semibold text-gold hover:underline flex items-center gap-1"
-              >
-                <span>Read more about our leadership &amp; journey</span>
-                <span>&rarr;</span>
-              </Link>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div className="p-4 rounded-xl bg-charcoal-200/90 border border-charcoal-100 space-y-2">
+                <div className="w-9 h-9 rounded-lg bg-charcoal-300 border border-gold/30 flex items-center justify-center text-gold">
+                  <Scale className="w-4 h-4" />
+                </div>
+                <h4 className="font-serif font-bold text-sm text-ivory">
+                  Revenue Title Clearance
+                </h4>
+                <p className="text-[11px] text-ivory/65 leading-relaxed">
+                  Rigorous verification of Khatauni, Khasra, 12-year encumbrance search, and Tehsil mutation before listing.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-charcoal-200/90 border border-charcoal-100 space-y-2">
+                <div className="w-9 h-9 rounded-lg bg-charcoal-300 border border-gold/30 flex items-center justify-center text-gold">
+                  <Building className="w-4 h-4" />
+                </div>
+                <h4 className="font-serif font-bold text-sm text-ivory">
+                  Under One Roof
+                </h4>
+                <p className="text-[11px] text-ivory/65 leading-relaxed">
+                  Land purchase, boundary walling, registry, VDA map sanction, architectural drawings, and home building.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-charcoal-200/90 border border-charcoal-100 space-y-2">
+                <div className="w-9 h-9 rounded-lg bg-charcoal-300 border border-gold/30 flex items-center justify-center text-gold">
+                  <Users className="w-4 h-4" />
+                </div>
+                <h4 className="font-serif font-bold text-sm text-ivory">
+                  Personal Site Escort
+                </h4>
+                <p className="text-[11px] text-ivory/65 leading-relaxed">
+                  Direct chauffeur-assisted site inspection with physical boundary pegging and neighborhood surveys.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -132,4 +141,3 @@ export function DirectorTrustSection() {
     </section>
   );
 }
-

@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { SampleProperty } from '@/lib/data/sample-data';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { BanarasiMedallion } from '@/components/ui/KashiMotifs';
 
 interface FeaturedPropertiesProps {
   properties: SampleProperty[];
@@ -23,9 +24,9 @@ export function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-gold text-xs font-semibold uppercase tracking-wider mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Handpicked Prime Real Estate</span>
+            <div className="inline-flex items-center gap-2 text-gold text-xs font-semibold uppercase tracking-[0.18em] mb-2">
+              <BanarasiMedallion size={14} />
+              <span>Handpicked Prime Real Estate &bull; Verified</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-ivory">
               Featured Properties in Varanasi

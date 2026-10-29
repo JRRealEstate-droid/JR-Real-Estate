@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { FaqItemData } from '@/lib/data/content';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import { BanarasiMedallion } from '@/components/ui/KashiMotifs';
 
 interface FaqSectionProps {
   faqs: FaqItemData[];
@@ -16,28 +17,28 @@ export function FaqSection({ faqs }: FaqSectionProps) {
   };
 
   return (
-    <section className="py-20 bg-charcoal">
+    <section className="py-20 bg-charcoal relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-1.5 text-gold text-xs font-semibold uppercase tracking-wider mb-2">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>Clear Guidance &bull; Legal Knowledge</span>
+          <div className="inline-flex items-center gap-2 text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-2">
+            <BanarasiMedallion size={14} />
+            <span>Clear Guidance &bull; Legal Knowledge in Varanasi</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-ivory">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm text-ivory/70 mt-2">
-            Important questions on property registry, circle rates, and home building in Varanasi.
+          <p className="text-sm text-ivory/70 mt-2 max-w-xl mx-auto">
+            Important answers on property registries, circle rates, VDA sanctions, and home construction across Varanasi.
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={faq.id}
-                className="bg-charcoal-200 border border-charcoal-100 rounded-xl overflow-hidden transition-all duration-200"
+                className="bg-charcoal-200/90 border border-charcoal-100 hover:border-gold/30 rounded-xl overflow-hidden transition-all duration-200 shadow-sm"
               >
                 <button
                   type="button"
@@ -56,7 +57,7 @@ export function FaqSection({ faqs }: FaqSectionProps) {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 text-sm text-ivory/75 leading-relaxed border-t border-charcoal-100/60 pt-3">
+                  <div className="px-5 pb-5 text-sm text-ivory/75 leading-relaxed border-t border-charcoal-100/60 pt-3.5">
                     {faq.answer}
                   </div>
                 )}
@@ -68,4 +69,3 @@ export function FaqSection({ faqs }: FaqSectionProps) {
     </section>
   );
 }
-

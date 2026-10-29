@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { SampleProperty } from '@/lib/data/sample-data';
 import { getCategoryLabel, getWhatsAppUrl } from '@/lib/utils';
 import { BRAND } from '@/lib/constants';
-import { MapPin, Bed, Bath, Maximize2, Phone, MessageSquare, ShieldCheck, Tag } from 'lucide-react';
+import { MapPin, Bed, Maximize2, Phone, MessageSquare, Tag } from 'lucide-react';
+import { BanarasiCornerAccent } from '@/components/ui/KashiMotifs';
 
 interface PropertyCardProps {
   property: SampleProperty;
@@ -22,7 +23,9 @@ export function PropertyCard({ property }: PropertyCardProps) {
   const whatsappUrl = getWhatsAppUrl(BRAND.whatsappNumber, whatsappMessage);
 
   return (
-    <div className="group bg-charcoal-200 rounded-xl overflow-hidden border border-charcoal-100 hover:border-gold/50 transition-all duration-300 shadow-lg hover:shadow-gold/10 flex flex-col justify-between">
+    <div className="group relative bg-charcoal-200/95 rounded-2xl overflow-hidden border border-charcoal-100/90 hover:border-gold/50 transition-all duration-300 shadow-lg hover:shadow-gold/15 flex flex-col justify-between">
+      <BanarasiCornerAccent position="top-right" />
+
       <div>
         {/* Image Container with Badges */}
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-charcoal-300">
@@ -33,11 +36,11 @@ export function PropertyCard({ property }: PropertyCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-black/30 pointer-events-none" />
 
           {/* Top Badges */}
           <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 items-center">
-            <span className="px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wider uppercase bg-charcoal/90 text-gold border border-gold/40 backdrop-blur-sm">
+            <span className="px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wider uppercase bg-charcoal/90 text-gold border border-gold/40 backdrop-blur-sm shadow-sm">
               {getCategoryLabel(property.category)}
             </span>
             {property.featured && (
@@ -48,7 +51,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
           </div>
 
           <div className="absolute top-3 right-3">
-            <span className="px-2 py-1 rounded text-[10px] font-mono font-semibold bg-charcoal/80 text-ivory/80 border border-charcoal-50 backdrop-blur-sm">
+            <span className="px-2 py-1 rounded text-[10px] font-mono font-semibold bg-charcoal/85 text-ivory/80 border border-charcoal-50 backdrop-blur-sm">
               {property.referenceId}
             </span>
           </div>
@@ -143,4 +146,3 @@ export function PropertyCard({ property }: PropertyCardProps) {
     </div>
   );
 }
-

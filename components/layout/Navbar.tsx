@@ -7,6 +7,7 @@ import { Logo } from '@/components/ui/Logo';
 import { BRAND, NAV_LINKS } from '@/lib/constants';
 import { getWhatsAppUrl } from '@/lib/utils';
 import { Phone, MessageSquare, Menu, X, PlusCircle, ShieldCheck, MapPin, Clock } from 'lucide-react';
+import { BanarasiMedallion } from '@/components/ui/KashiMotifs';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,6 +19,11 @@ export function Navbar() {
       <div className="hidden lg:block bg-charcoal-400 text-xs text-ivory/80 border-b border-charcoal-100/70 py-2 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6 text-[11px]">
+            <span className="flex items-center gap-1.5 text-gold font-medium">
+              <BanarasiMedallion size={13} />
+              <span>Kashi Real Estate &amp; Construction</span>
+            </span>
+            <span className="text-charcoal-100">|</span>
             <span className="flex items-center gap-1.5 text-ivory/90">
               <MapPin className="w-3.5 h-3.5 text-gold flex-shrink-0" />
               <span>S9/90A, Pandeypur Chauraha, Varanasi</span>

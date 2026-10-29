@@ -45,6 +45,36 @@ const config: Config = {
         'gold-lg': '0 10px 25px -3px rgba(213, 162, 74, 0.35)',
         elevated: '0 20px 40px -15px rgba(11, 13, 13, 0.08)',
       },
+      keyframes: {
+        'kashi-drift': {
+          '0%': { transform: 'scale(1) translate(0, 0)' },
+          '50%': { transform: 'scale(1.03) translate(-0.8%, -0.4%)' },
+          '100%': { transform: 'scale(1.01) translate(0.4%, -0.8%)' },
+        },
+        'ganga-flow': {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(-15px)' },
+        },
+        'diya-glow': {
+          '0%, 100%': { opacity: '0.18', transform: 'scale(1)' },
+          '50%': { opacity: '0.36', transform: 'scale(1.06)' },
+        },
+        'fade-rise': {
+          '0%': { opacity: '0', transform: 'translateY(16px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'shimmer-gold': {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+      },
+      animation: {
+        'kashi-drift': 'kashi-drift 24s ease-in-out infinite alternate',
+        'ganga-flow': 'ganga-flow 12s ease-in-out infinite',
+        'diya-glow': 'diya-glow 5s ease-in-out infinite',
+        'fade-rise': 'fade-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'shimmer-gold': 'shimmer-gold 6s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
