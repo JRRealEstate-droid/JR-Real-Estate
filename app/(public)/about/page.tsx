@@ -79,16 +79,15 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-4 text-center lg:text-left space-y-4">
-              <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden p-[3px] bg-gradient-to-tr from-gold via-gold-light to-gold-dark mx-auto lg:mx-0 shadow-gold">
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-charcoal">
-                  <Image
-                    src="/images/jr-logo.jpg"
-                    alt="JR Real Estate Varanasi Official Logo"
-                    width={144}
-                    height={144}
-                    className="w-full h-full object-cover object-center rounded-full"
-                  />
-                </div>
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden ring-4 ring-gold/80 ring-offset-4 ring-offset-charcoal mx-auto lg:mx-0 shadow-gold-lg bg-charcoal">
+                <Image
+                  src="/images/jr-logo.jpg"
+                  alt="JR Real Estate Varanasi Official Logo"
+                  fill
+                  sizes="160px"
+                  unoptimized={true}
+                  className="object-cover object-center rounded-full"
+                />
               </div>
 
               <div>

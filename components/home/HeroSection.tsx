@@ -53,7 +53,22 @@ export function HeroSection() {
 
       {/* 3. Hero Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto space-y-6 motion-safe:animate-fade-rise">
+        <div className="text-center max-w-4xl mx-auto space-y-5 motion-safe:animate-fade-rise">
+          {/* Official Emblem Spotlight */}
+          <div className="flex justify-center pt-2">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full ring-4 ring-gold/80 ring-offset-4 ring-offset-charcoal shadow-gold-lg overflow-hidden bg-charcoal transition-transform hover:scale-105 duration-300">
+              <Image
+                src="/images/jr-logo.jpg"
+                alt="JR Real Estate Varanasi - Official Logo"
+                fill
+                sizes="120px"
+                unoptimized={true}
+                className="object-cover object-center rounded-full"
+                priority
+              />
+            </div>
+          </div>
+
           {/* Trust Badge with Banarasi Motif */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-charcoal-200/90 border border-gold/30 text-gold text-xs font-semibold tracking-wide shadow-gold backdrop-blur-md">
             <BanarasiMedallion size={14} className="text-gold" />
