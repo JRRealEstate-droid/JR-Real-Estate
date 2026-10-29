@@ -19,10 +19,16 @@ export function DirectorTrustSection() {
               <BanarasiCornerAccent position="top-right" />
               <BanarasiCornerAccent position="bottom-left" />
 
-              {/* Monogram / Director Seal */}
-              <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-gold via-gold-light to-gold-dark p-[2px] mb-6 shadow-gold">
-                <div className="w-full h-full rounded-full bg-charcoal flex items-center justify-center font-serif text-xl font-bold text-gold">
-                  UY
+              {/* Official Brand Seal Logo */}
+              <div className="relative w-20 h-20 rounded-full overflow-hidden p-[2px] bg-gradient-to-tr from-gold via-gold-light to-gold-dark shadow-gold mb-6">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-charcoal">
+                  <Image
+                    src="/images/jr-logo.jpg"
+                    alt="JR Real Estate Varanasi Official Seal"
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-cover object-center rounded-full"
+                  />
                 </div>
               </div>
 

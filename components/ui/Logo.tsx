@@ -1,42 +1,72 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface LogoProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   showText?: boolean;
 }
 
 export function Logo({ className = '', size = 'md', showText = true }: LogoProps) {
-  const sizeClasses = {
-    sm: 'w-8 h-8 text-xs',
-    md: 'w-10 h-10 text-sm',
-    lg: 'w-13 h-13 text-base',
+  const sizeMap = {
+    sm: {
+      container: 'w-9 h-9',
+      imageSize: 36,
+      title: 'text-base',
+      subline: 'text-[9px]',
+    },
+    md: {
+      container: 'w-11 h-11 sm:w-12 sm:h-12',
+      imageSize: 48,
+      title: 'text-lg sm:text-xl',
+      subline: 'text-[10px]',
+    },
+    lg: {
+      container: 'w-14 h-14 sm:w-16 sm:h-16',
+      imageSize: 64,
+      title: 'text-xl sm:text-2xl',
+      subline: 'text-xs',
+    },
+    xl: {
+      container: 'w-20 h-20 sm:w-24 sm:h-24',
+      imageSize: 96,
+      title: 'text-2xl sm:text-3xl',
+      subline: 'text-sm',
+    },
   };
+
+  const currentSize = sizeMap[size];
 
   return (
     <Link href="/" className={`flex items-center gap-3 group flex-shrink-0 ${className}`}>
-      {/* Circular Emblem Logo */}
+      {/* Official Circular Emblem Logo */}
       <div
-        className={`${sizeClasses[size]} rounded-full bg-gradient-to-br from-gold-light via-gold to-gold-dark p-[2px] shadow-gold flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}
+        className={`relative ${currentSize.container} rounded-full overflow-hidden p-[2px] bg-gradient-to-tr from-gold-dark via-gold to-gold-light shadow-gold flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}
       >
-        <div className="w-full h-full rounded-full bg-charcoal flex flex-col items-center justify-center text-center border border-gold/40">
-          <span className="font-serif font-bold text-gold tracking-tight leading-none text-sm">
-            JR
-          </span>
-          <span className="text-[7px] text-ivory/80 uppercase tracking-widest leading-none mt-0.5">
-            VNS
-          </span>
+        <div className="relative w-full h-full rounded-full overflow-hidden bg-charcoal">
+          <Image
+            src="/images/jr-logo.jpg"
+            alt="JR Real Estate Varanasi"
+            width={currentSize.imageSize}
+            height={currentSize.imageSize}
+            className="w-full h-full object-cover object-center rounded-full"
+            priority
+          />
         </div>
       </div>
 
       {showText && (
         <div className="flex flex-col justify-center whitespace-nowrap">
-          <span className="font-serif font-bold text-ivory tracking-wide leading-none text-lg group-hover:text-gold transition-colors">
+          <span
+            className={`font-serif font-bold text-ivory tracking-wide leading-tight ${currentSize.title} group-hover:text-gold transition-colors`}
+          >
             JR Real Estate
           </span>
-          <span className="text-[10px] text-gold tracking-widest uppercase font-semibold mt-1">
-            Varanasi
+          <span
+            className={`text-gold tracking-[0.2em] uppercase font-semibold mt-0.5 ${currentSize.subline}`}
+          >
+            Varanasi &bull; Builders
           </span>
         </div>
       )}

@@ -29,6 +29,10 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     type: 'website',
   },
+  icons: {
+    icon: '/images/jr-logo.jpg',
+    apple: '/images/jr-logo.jpg',
+  },
 };
 
 export default function RootLayout({
