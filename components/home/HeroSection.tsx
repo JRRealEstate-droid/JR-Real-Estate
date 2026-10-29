@@ -35,15 +35,16 @@ export function HeroSection() {
       {/* 1. Atmospheric Kashi Sunrise & Ganga River Photographic Backdrop */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <Image
-          src="/images/varanasi-golden-ghats.jpg"
-          alt="Golden hour on the ghats of Varanasi, India"
+          src="/images/kashi-sunset-ghats.png"
+          alt="Majestic golden sunset over the ghats and temples of Varanasi"
           fill
           priority
           sizes="100vw"
+          unoptimized={true}
           className="object-cover object-center motion-safe:animate-kashi-drift opacity-80 filter brightness-105 contrast-105"
         />
         {/* Layered Gradient Overlay: Warm golden dawn light while preserving crystal-clear readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/55 to-charcoal" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/50 to-charcoal" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-black/30" />
       </div>
 

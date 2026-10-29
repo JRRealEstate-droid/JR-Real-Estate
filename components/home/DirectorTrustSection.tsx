@@ -90,10 +90,11 @@ export function DirectorTrustSection() {
             {/* Visual Panel: Authentic Architectural Stone Masonry */}
             <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden border border-charcoal-100 shadow-xl my-4">
               <Image
-                src="/images/varanasi-architecture.jpg"
-                alt="Timeless architectural stone masonry and historic riverside pavilion in Varanasi"
+                src="/images/kashi-varanasi-boats.png"
+                alt="Iconic painted wooden boats on the Ganga riverbank against ancient Varanasi stone architecture"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
+                unoptimized={true}
                 className="object-cover object-center filter brightness-95 contrast-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />

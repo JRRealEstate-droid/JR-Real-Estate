@@ -8,52 +8,52 @@ import { ArrowRight, Compass, MapPin, Sparkles } from 'lucide-react';
 
 const KASHI_SCENES = [
   {
-    id: 'ghats-sunrise',
-    title: 'Ganga Ghats & Sunrise Light',
+    id: 'ghats-sunset',
+    title: 'Golden Sunset over Ganga Ghats',
     tag: 'Riverfront Serenity',
-    image: '/images/varanasi-golden-ghats.jpg',
-    description: 'Golden morning light breaking over the sacred Ganga, bathing ancient stone ghats and tranquil rowing boats in dawn mist.',
-    localityContext: 'Prime riverfront corridors & view-facing residential developments.',
+    image: '/images/kashi-sunset-ghats.png',
+    description: 'Golden evening light washing over ancient stone temples, riverside palaces, and wooden rowing boats on the Ganga.',
+    localityContext: 'Prime river-facing and heritage corridor residential opportunities.',
   },
   {
-    id: 'stone-architecture',
-    title: 'Historic Stone Architecture',
-    tag: 'Heritage & Craftsmanship',
-    image: '/images/varanasi-architecture.jpg',
-    description: 'Centuries-old sandstone pavilions, carved jharokhas, and temple shikhars representing Varanasi’s enduring structural legacy.',
-    localityContext: 'Architectural inspiration for JR Real Estate turnkey home designs.',
+    id: 'aerial-ghats',
+    title: 'Historic Ghats & Temple Spires',
+    tag: 'Living Heritage',
+    image: '/images/kashi-aerial-ghats.png',
+    description: 'A breathtaking high-angle view of Varanasi’s bustling morning ghats, sacred temple shikhars, and boats drifting along the river.',
+    localityContext: 'Deep connection to Kashi’s culture while building modern homes.',
   },
   {
-    id: 'ancient-lanes',
-    title: 'Historic Old-City Lanes (Galiyan)',
-    tag: 'Timeless Neighborhoods',
-    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1200&q=85',
-    description: 'Stone-paved alleys, vintage wooden doorways, and warm neighborly courtyards reflecting Kashi’s close-knit community fabric.',
-    localityContext: 'Preserving community values in modern gated residential enclaves.',
+    id: 'golden-steps',
+    title: 'Stone Steps & Morning Sunlight',
+    tag: 'Timeless Varanasi',
+    image: '/images/kashi-golden-steps.png',
+    description: 'Sunlight gleaming on the stone pauri steps with swooping birds and peaceful boats anchored along the riverbank.',
+    localityContext: 'Enduring stone craftsmanship reflected in JR Real Estate construction.',
   },
   {
-    id: 'evening-aarti',
-    title: 'Twilight & Ganga Aarti Glow',
-    tag: 'Spiritual Radiance',
-    image: 'https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&w=1200&q=85',
-    description: 'Golden brass lamps and twilight diyas casting reflections on the holy river Ganga as the evening bells chime across the city.',
-    localityContext: 'Peaceful living environments within accessible reach of cultural hubs.',
+    id: 'ganga-aarti',
+    title: 'Sacred Ganga Aarti & River Altar',
+    tag: 'Spiritual Sanctity',
+    image: '/images/kashi-trishul-aarti.png',
+    description: 'The auspicious golden Trishul and Nataraja altar facing the tranquil holy waters during the sacred twilight Ganga Aarti.',
+    localityContext: 'Guiding every property transaction with reverence and honesty.',
   },
   {
-    id: 'banarasi-craft',
-    title: 'Banarasi Zari & Brocade Heritage',
-    tag: 'Artisan Excellence',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
-    description: 'The master craft of Banarasi silk handlooms, weaving metallic gold and silver zari threads with patience and unyielding perfection.',
-    localityContext: 'The same standard of craftsmanship we bring to our construction finishes.',
+    id: 'varanasi-boats',
+    title: 'Iconic Painted Boats & Heritage Skyline',
+    tag: 'Kashi Identity',
+    image: '/images/kashi-varanasi-boats.png',
+    description: 'Traditional handcrafted wooden boats resting on the Varanasi shoreline against the backdrop of historic stone architecture.',
+    localityContext: 'Rooted in local knowledge from Pandeypur Chauraha to the bypass.',
   },
   {
-    id: 'historic-riverbank',
+    id: 'golden-panorama',
     title: 'The Eternal Riverfront Horizon',
-    tag: 'Timeless Kashi',
-    image: '/images/varanasi-riverfront.jpg',
-    description: 'A panoramic expanse of Varanasi’s curved crescent riverbanks, stone steps, and morning prayer gatherings.',
-    localityContext: 'Grounding every JR Real Estate venture in authentic local pride.',
+    tag: 'Dawn Light',
+    image: '/images/varanasi-golden-ghats.jpg',
+    description: 'The golden hour panorama across the crescent curve of the Ganges, evoking eternal peace and timeless prosperity.',
+    localityContext: 'Your dream home in Varanasi, built with uncompromising responsibility.',
   },
 ];
 
@@ -105,6 +105,7 @@ export function KashiHeritageShowcase() {
                     alt={scene.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    unoptimized={true}
                     className="object-cover object-center group-hover:scale-108 transition-transform duration-700 filter brightness-95 contrast-105"
                   />
                   {/* Subtle lower gradient to ensure text over image remains readable */}
