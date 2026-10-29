@@ -1,0 +1,420 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  SUPER_ADMIN
+  PROPERTY_MANAGER
+  SALES_MANAGER
+  SALES_EXECUTIVE
+  CONTENT_MANAGER
+  CONSTRUCTION_MANAGER
+  VIEWER
+}
+
+enum TransactionType {
+  BUY
+  RENT
+  LEASE
+}
+
+enum PropertyCategory {
+  PLOT_LAND
+  FLAT_APARTMENT
+  VILLA_HOUSE
+  COMMERCIAL_SHOP
+  COMMERCIAL_OFFICE
+  AGRICULTURAL_LAND
+  WAREHOUSE
+}
+
+enum PropertyStatus {
+  DRAFT
+  UNDER_REVIEW
+  PUBLISHED
+  SOLD
+  RENTED
+  ARCHIVED
+}
+
+enum FurnishingStatus {
+  UNFURNISHED
+  SEMI_FURNISHED
+  FULLY_FURNISHED
+}
+
+enum PossessionStatus {
+  READY_TO_MOVE
+  UNDER_CONSTRUCTION
+  RESALE
+  NEW_LAUNCH
+}
+
+enum ProjectStatus {
+  UPCOMING
+  UNDER_CONSTRUCTION
+  READY_TO_MOVE
+  COMPLETED
+}
+
+enum LeadSource {
+  PROPERTY_INQUIRY
+  WEBSITE_CONTACT
+  SELL_PROPERTY
+  CONSTRUCTION_FORM
+  ESTIMATE_CALCULATOR
+  PHONE_INBOUND
+  WALK_IN
+  SITE_VISIT_REQUEST
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  VISIT_SCHEDULED
+  VISIT_COMPLETED
+  NEGOTIATION
+  CONVERTED
+  LOST_ON_HOLD
+}
+
+enum LeadPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum VisitStatus {
+  SCHEDULED
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  RESCHEDULED
+}
+
+model User {
+  id           String         @id // Matches Supabase Auth UUID
+  email        String         @unique
+  fullName     String
+  phone        String?
+  role         Role           @default(VIEWER)
+  isActive     Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  assignedLeads Lead[]        @relation("AssignedLeads")
+  siteVisits    SiteVisit[]   @relation("StaffVisits")
+  leadActivities LeadActivity[]
+  auditLogs     AuditLog[]
+
+  @@index([role])
+}
+
+model Locality {
+  id           String     @id @default(cuid())
+  name         String
+  slug         String     @unique
+  pincode      String?
+  description  String?
+  isFeatured   Boolean    @default(false)
+  displayOrder Int        @default(0)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  properties   Property[]
+  projects     Project[]
+
+  @@index([slug])
+  @@index([isFeatured])
+}
+
+model Amenity {
+  id         String            @id @default(cuid())
+  name       String
+  slug       String            @unique
+  icon       String?
+  category   String?
+  properties PropertyAmenity[]
+
+  @@index([slug])
+}
+
+model Property {
+  id                String            @id @default(cuid())
+  referenceId       String            @unique // e.g. "JR-101"
+  slug              String            @unique // e.g. "3-bhk-luxury-apartment-sigra-jr101"
+  title             String
+  description       String
+  transactionType   TransactionType   @default(BUY)
+  category          PropertyCategory  @default(FLAT_APARTMENT)
+  status            PropertyStatus    @default(DRAFT)
+  
+  localityId        String
+  locality          Locality          @relation(fields: [localityId], references: [id])
+  address           String
+  landmark          String?
+
+  price             Float             // In INR for filtering/sorting
+  priceDisplay      String            // e.g. "₹ 65 Lakh"
+  isPriceNegotiable Boolean           @default(false)
+
+  carpetArea        Float?
+  builtUpArea       Float?
+  plotArea          Float?
+  areaUnit          String            @default("sq.ft") // "sq.ft", "sq.yard", "biswa", "dhur"
+
+  bedrooms          Int?
+  bathrooms         Int?
+  balconies         Int?
+  floorNumber       Int?
+  totalFloors       Int?
+  facing            String?           // East, North, North-East, etc.
+  furnishingStatus  FurnishingStatus? @default(UNFURNISHED)
+  possessionStatus  PossessionStatus? @default(READY_TO_MOVE)
+  possessionDate    DateTime?
+
+  verified          Boolean           @default(false)
+  verificationNotes String?
+  featured          Boolean           @default(false)
+  viewsCount        Int               @default(0)
+
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  images            PropertyImage[]
+  amenities         PropertyAmenity[]
+  leads             Lead[]
+  siteVisits        SiteVisit[]
+
+  @@index([status, transactionType])
+  @@index([category, localityId])
+  @@index([price])
+  @@index([featured])
+  @@index([slug])
+  @@index([referenceId])
+}
+
+model PropertyImage {
+  id           String    @id @default(cuid())
+  propertyId   String
+  property     Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  url          String
+  altText      String?
+  isPrimary    Boolean   @default(false)
+  displayOrder Int       @default(0)
+  createdAt    DateTime  @default(now())
+
+  @@index([propertyId])
+}
+
+model PropertyAmenity {
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  amenityId  String
+  amenity    Amenity  @relation(fields: [amenityId], references: [id], onDelete: Cascade)
+
+  @@id([propertyId, amenityId])
+}
+
+model Project {
+  id                String         @id @default(cuid())
+  referenceId       String         @unique // e.g. "JR-PRJ-01"
+  slug              String         @unique
+  title             String
+  builderName       String         @default("JR Real Estate & Builders")
+  reraNumber        String?
+  localityId        String
+  locality          Locality       @relation(fields: [localityId], references: [id])
+  address           String
+  status            ProjectStatus  @default(UNDER_CONSTRUCTION)
+  minPrice          Float?
+  maxPrice          Float?
+  priceRangeDisplay String?        // e.g. "₹ 45 L - ₹ 1.2 Cr"
+  completionDate    String?
+  description       String
+  highlights        String?        // Comma-separated or JSON list
+  brochureUrl       String?
+  featured          Boolean        @default(false)
+  published         Boolean        @default(true)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  images            ProjectImage[]
+  leads             Lead[]
+
+  @@index([slug])
+  @@index([status])
+  @@index([localityId])
+}
+
+model ProjectImage {
+  id           String   @id @default(cuid())
+  projectId    String
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  url          String
+  caption      String?
+  displayOrder Int      @default(0)
+
+  @@index([projectId])
+}
+
+model Lead {
+  id                 String            @id @default(cuid())
+  referenceCode      String            @unique // e.g. "LEAD-2025-001"
+  fullName           String
+  phone              String
+  email              String?
+  localityPreference String?
+  budgetRange        String?
+  propertyType       String?
+  leadSource         LeadSource        @default(PROPERTY_INQUIRY)
+  status             LeadStatus        @default(NEW)
+  priority           LeadPriority      @default(MEDIUM)
+  requirementDetails String?
+  followUpDate       DateTime?
+
+  propertyId         String?
+  property           Property?         @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  projectId          String?
+  project            Project?          @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  assignedToId       String?
+  assignedTo         User?             @relation("AssignedLeads", fields: [assignedToId], references: [id], onDelete: SetNull)
+
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  activities         LeadActivity[]
+  siteVisits         SiteVisit[]
+  constructionLead   ConstructionLead?
+
+  @@index([phone])
+  @@index([status])
+  @@index([assignedToId])
+  @@index([createdAt])
+}
+
+model LeadActivity {
+  id           String   @id @default(cuid())
+  leadId       String
+  lead         Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  userId       String?
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  activityType String   // "NOTE", "STATUS_CHANGE", "CALL", "WHATSAPP", "SITE_VISIT", "MERGE"
+  description  String
+  createdAt    DateTime @default(now())
+
+  @@index([leadId])
+}
+
+model SiteVisit {
+  id          String      @id @default(cuid())
+  leadId      String
+  lead        Lead        @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  propertyId  String?
+  property    Property?   @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  scheduledAt DateTime
+  status      VisitStatus @default(SCHEDULED)
+  visitNotes  String?
+  outcome     String?
+  staffId     String?
+  staff       User?       @relation("StaffVisits", fields: [staffId], references: [id], onDelete: SetNull)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([leadId])
+  @@index([scheduledAt])
+}
+
+model ConstructionLead {
+  id                      String   @id @default(cuid())
+  leadId                  String   @unique
+  lead                    Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  plotOwnership           String   @default("OWNED") // "OWNED", "LOOKING_TO_BUY", "IN_PROCESS"
+  plotAreaSqFt            Float?
+  plotLocation            String?
+  plannedFloors           String?  // "G", "G+1", "G+2", "G+3+"
+  estimatedBudget         String?
+  drawingsAvailable       Boolean  @default(false)
+  expectedStartDate       String?
+  preferredPackage        String?  @default("STANDARD") // "STANDARD", "PREMIUM", "LUXURY"
+  siteInspectionRequested Boolean  @default(false)
+  additionalDetails       String?
+  createdAt               DateTime @default(now())
+}
+
+model BlogPost {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  excerpt     String
+  content     String
+  coverImage  String?
+  authorName  String    @default("JR Editorial Team")
+  category    String?
+  tags        String?
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([slug])
+  @@index([published])
+}
+
+model FaqItem {
+  id           String   @id @default(cuid())
+  question     String
+  answer       String
+  category     String   @default("GENERAL") // "GENERAL", "BUYING", "SELLING", "CONSTRUCTION", "LEGAL"
+  displayOrder Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([category])
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  clientName  String
+  locality    String?
+  rating      Int      @default(5)
+  reviewText  String
+  serviceType String?  // e.g. "Plot Purchase", "House Construction"
+  isVerified  Boolean  @default(false)
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Setting {
+  key       String   @id
+  value     String   // String or serialized JSON
+  category  String   @default("GENERAL")
+  updatedAt DateTime @updatedAt
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userEmail   String?
+  action      String   // e.g. "PROPERTY_PUBLISHED", "PRICE_CHANGED", "LEAD_EXPORTED"
+  entityType  String
+  entityId    String?
+  detailsJson String?
+  ipAddress   String?
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
